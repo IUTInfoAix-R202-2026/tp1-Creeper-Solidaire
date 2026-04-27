@@ -31,7 +31,7 @@ class MiseEnPageTest {
 
   // --- Étape 1 : afficher la fenêtre ---
 
-  @Disabled("Retire cette annotation pour activer le test")
+  // @Disabled("Retire cette annotation pour activer le test")
   @Test
   void laFenetreEstVisible(FxRobot robot) {
     assertThat(stage.isShowing())
@@ -41,7 +41,7 @@ class MiseEnPageTest {
 
   // --- Étape 2 : créer le squelette BorderPane + Scene ---
 
-  @Disabled("Retire cette annotation pour activer le test")
+  // @Disabled("Retire cette annotation pour activer le test")
   @Test
   void leRootEstUnBorderPane(FxRobot robot) {
     assertThat(stage.getScene().getRoot())

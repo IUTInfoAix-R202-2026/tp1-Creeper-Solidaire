@@ -1,6 +1,17 @@
 package fr.univ_amu.iut.exercice4;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 /**
@@ -30,16 +41,47 @@ public class MiseEnPage extends Application {
   @Override
   public void start(Stage primaryStage) {
     // TODO exercice 4 : construire la maquette ci-dessus.
-    //
+    // Menu menu1 = new Menu("File");
+    // Menu menu2 = new Menu("Options");
+    // Menu menu3 = new Menu("Help");
     // Stratégie conseillée :
-    //
+    BorderPane borderPane = new BorderPane();
+
+    Menu menu_fichier = new Menu("Fichier");
+    Menu menu_aide = new Menu("Aide");
+    MenuBar menuBar = new MenuBar(menu_fichier, menu_aide);
+
+    GridPane gridPane = new GridPane();
+    Label label_nom = new Label("Nom :");
+    Label label_email = new Label("Email :");
+    TextField textFieldNom = new TextField();
+    TextField textFieldEmail = new TextField();
+    gridPane.add(label_nom, 0, 0);
+    gridPane.add(textFieldNom, 1, 0);
+    gridPane.add(label_email, 0, 1);
+    gridPane.add(textFieldEmail, 1, 1);
+
+    Button button_valider = new Button("Valider");
+    Button button_annuler = new Button("Annuler");
+    HBox hbox = new HBox(10);
+    hbox.getChildren().addAll(button_valider, button_annuler);
+    hbox.setPadding(new Insets(10));
+    hbox.setAlignment(Pos.CENTER);
+
+    borderPane.setTop(menuBar);
+    borderPane.setCenter(gridPane);
+    borderPane.setBottom(hbox);
+
+    Scene scene = new Scene(borderPane);
+    primaryStage.setScene(scene);
+    primaryStage.show();
     // 1. Un BorderPane comme racine (setTop, setCenter, setBottom).
-    // 2. Top    : un MenuBar avec deux Menu "Fichier" et "Aide".
+    // 2. Top : un MenuBar avec deux Menu "Fichier" et "Aide".
     // 3. Center : un GridPane avec 2 lignes / 2 colonnes :
-    //                (0,0) Label "Nom :"     | (1,0) TextField
-    //                (0,1) Label "Email :"   | (1,1) TextField
+    // (0,0) Label "Nom :" | (1,0) TextField
+    // (0,1) Label "Email :" | (1,1) TextField
     // 4. Bottom : un HBox contenant deux boutons "Valider" et "Annuler",
-    //             avec un peu d'espacement et un padding.
+    // avec un peu d'espacement et un padding.
     //
     // Donne un id CSS utile sur les composants si tu veux les retrouver
     // facilement (les tests utilisent lookup sur les classes ".text-field"
